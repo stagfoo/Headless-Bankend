@@ -40,7 +40,7 @@ h3,a {
   </h1>
 <h2 class="text-center">No Front Head, Only Backend</h2>
 <pre><code>
-  <?php print_r(mission_endpoint('rosseta-mission')); ?>
+  <?php //print_r(mission_endpoint('rosseta-mission')); ?>
 </code></pre>
   </pre>
 	<div id="postman" class="container text-center">
