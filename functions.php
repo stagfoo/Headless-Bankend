@@ -2,14 +2,20 @@
 //Supports
 add_theme_support( 'post-thumbnails' );
 
+//helper functions
+include('libs/CPT.php');
+include('libs/function-set_endpoint.php');
+
 //Post Types
-include('custom-post-types/missions.php'); 
+$missions = new CPT('mission');
 
-//APIs (Endpoints)
-include('custom-apis/menu.php'); //headless/menu/[id]
-include('custom-apis/mission.php'); //headless/mission/[id]
+//Callback Functions
+//use this to call whatever you would like for the engpoint.
+include('callback/menu.php'); 
+include('callback/mission.php'); 
 
-
+//Endpoints - Defind custom endpoints
+set_endpoint('headless','mission','(?P<id>\d+)','mission_callback');
 
 
  ?>
