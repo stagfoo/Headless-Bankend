@@ -3,7 +3,6 @@ function mission_endpoint($data ) {
 $result;
         // WP_Query arguments
 $args = array (
-    'name'               	  => $data['name'],
     'post_type'               => array('mission')
 );
 
