@@ -27,7 +27,7 @@ return $result;
 }
 
 add_action( 'rest_api_init', function () {
-    register_rest_route( 'headless/', '/pages/(?P<name>[a-z0-9\-]+)', array(
+    register_rest_route( 'headless/', 'pages/(?P<name>[a-z0-9\-]+)', array(
         'methods' => 'GET',
         'callback' => 'page_endpoint',
     ) );
