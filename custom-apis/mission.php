@@ -1,8 +1,9 @@
 <?php 
 function mission_endpoint($data ) {
-$result;
+$result = $data['name'];
         // WP_Query arguments
 $args = array (
+    'name'               	  => $data['name'],
     'post_type'               => array('mission')
 );
 
@@ -13,7 +14,8 @@ $query = new WP_Query( $args );
 if ( $query->have_posts() ) {
     while ( $query->have_posts() ) {
         $query->the_post();
-        $result = array( 'mission' => [get_post(get_the_id())] );
+        // $result = array( 'mission' => [get_post(get_the_id())] );
+
     }
 } else {
     $result = "no result";
