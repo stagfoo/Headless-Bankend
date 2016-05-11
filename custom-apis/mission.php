@@ -1,9 +1,9 @@
 <?php 
-function mission_endpoint( $data ) {
+function mission_endpoint($name) {
 $result;
         // WP_Query arguments
 $args = array (
-    'name'               => $data['name'],
+    'name'               => $name,
     'post_type'               => array('mission')
 );
 
@@ -27,10 +27,10 @@ $result = json_decode(json_encode($result),true);
 return $result;
 }
 
-add_action( 'rest_api_init', function () {
-    register_rest_route( 'headless/', '/mission/(?P<name>[a-z0-9\-]+)', array(
-        'methods' => 'GET',
-        'callback' => 'mission_endpoint',
-    ) );
-} );
+// add_action( 'rest_api_init', function () {
+//     register_rest_route( 'headless/', '/mission/(?P<name>[a-z0-9\-]+)', array(
+//         'methods' => 'GET',
+//         'callback' => 'mission_endpoint',
+//     ) );
+// } );
  ?>

@@ -39,6 +39,9 @@ h3,a {
     Headless
   </h1>
 <h2 class="text-center">No Front Head, Only Backend</h2>
+<pre><code>
+  <?php print_r(mission_endpoint('rosseta-mission')); ?>
+</code></pre>
   </pre>
 	<div id="postman" class="container text-center">
 	<img src="https://s3.amazonaws.com/kinlane-productions/building-blocks/x-postman.png" width="150"></img>
