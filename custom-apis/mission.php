@@ -1,17 +1,12 @@
 <?php 
-function mission_endpoint( $data ) {
-        $args;
-        if(isset( $data['id'])){
-            $args = array (
-                'post_type'              => array( 'mission' ),
-                'p' => $data['id']
-            );
-        } else {
-            $args = array (
-                'post_type'              => array( 'mission' ),
-            );
-        }
-$result = Array();
+function page_endpoint( $data ) {
+$result;
+        // WP_Query arguments
+$args = array (
+    'pagename'               => $data['name'],
+    'post_type'               => array('mission'),
+);
+
 // The Query
 $query = new WP_Query( $args );
 
@@ -19,22 +14,23 @@ $query = new WP_Query( $args );
 if ( $query->have_posts() ) {
     while ( $query->have_posts() ) {
         $query->the_post();
-    array_push($result,get_post());
+        $result = array( 'page' => [get_post(get_the_id())] );
     }
 } else {
-    $result = false;
+    $result = "no result";
 }
 
 // Restore original Post Data
-wp_reset_postdata(); 
+wp_reset_postdata();
+
 $result = json_decode(json_encode($result),true);
 return $result;
 }
 
 add_action( 'rest_api_init', function () {
-    register_rest_route( 'headless/', '/missions/(?P<id>\d+)', array(
+    register_rest_route( 'headless/', '/pages/(?P<name>[a-z0-9\-]+)', array(
         'methods' => 'GET',
-        'callback' => 'mission_endpoint',
+        'callback' => 'page_endpoint',
     ) );
 } );
  ?>

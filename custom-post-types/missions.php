@@ -48,6 +48,9 @@ function mission_post_type() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
+		'rest_base'          => 'missions',
+		'show_in_rest'       => true,
+  		'rest_controller_class' => 'WP_REST_Posts_Controller'
 	);
 	register_post_type( 'mission', $args );
 
