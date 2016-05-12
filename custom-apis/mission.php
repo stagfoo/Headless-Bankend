@@ -14,7 +14,7 @@ $query = new WP_Query( $args );
 if ( $query->have_posts() ) {
     while ( $query->have_posts() ) {
         $query->the_post();
-        // $result = array( 'mission' => [get_post(get_the_id())] );
+         $result = array( 'mission' => [get_post(get_the_id())] );
 
     }
 } else {
@@ -29,7 +29,7 @@ return $result;
 }
 
 add_action( 'rest_api_init', function () {
-    register_rest_route( 'headless/', 'missions/(?P<name>[a-z0-9\-]+)', array(
+    register_rest_route( 'headless/', '/mission/(?P<name>[a-z0-9\-]+)', array(
         'methods' => 'GET',
         'callback' => 'mission_endpoint',
     ) );
