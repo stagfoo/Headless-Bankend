@@ -49,7 +49,7 @@ $query = new WP_Query( $args );
 if ( $query->have_posts() ) {
     while ( $query->have_posts() ) {
         $query->the_post();
-        array_push($result, get_post(get_the_id()));
+        array_push($result, array ('mission' => [get_post(get_the_id())]));
 
     }
 } else {
