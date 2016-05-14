@@ -15,7 +15,7 @@ include('callback/menu.php');
 include('callback/mission.php'); 
 
 //Endpoints - Defind custom endpoints
-set_endpoint('headless','mission','(?P<id>\d+)','mission_callback');
+//set_endpoint('headless','/mission','(?P<id>\d+)','mission_callback');
 
 
  ?>
