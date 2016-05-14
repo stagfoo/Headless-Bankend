@@ -49,7 +49,19 @@ $query = new WP_Query( $args );
 if ( $query->have_posts() ) {
     while ( $query->have_posts() ) {
         $query->the_post();
-        array_push($result, array ('mission' => [get_post(get_the_id())]));
+        $the_post = get_post(get_the_id());
+        array_push($result, [
+            'title' => get_the_title(),
+            'id'=> $the_post->ID,
+            'slug'=> $the_post->post_name,
+            'content'=> $the_post->post_content,
+            'mission_date'=> get_field('mission_date'),
+            'background'=> get_field('background_image'),
+            'logo'=> get_field('logo'),
+
+
+
+            ]);
 
     }
 } else {
