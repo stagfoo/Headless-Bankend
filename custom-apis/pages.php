@@ -13,7 +13,7 @@ $query = new WP_Query( $args );
 if ( $query->have_posts() ) {
     while ( $query->have_posts() ) {
         $query->the_post();
-        $result = array( 'page' => [get_post(get_the_id())] );
+        $result = array( 'page' => [get_post(get_the_id()),get_post_meta(get_the_id())] );
     }
 } else {
     $result = "no result";
